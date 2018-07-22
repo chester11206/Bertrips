@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+{% load staticfiles %}
+<!--
+	Snapshot by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<!-- CHESTER_HER -->
+<html>
+	<head>
+		<title>{{ post.title }} - Bernice's Journey</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    	<link rel="stylesheet" href="{% static 'css/homepage.css' %}"/>
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    	<link href="//fonts.googleapis.com/css?family=Lemon" rel="stylesheet" type="text/css">
+   		<link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Port+Lligat+Slab|Itim|Alegreya+SC|IM+Fell+Great+Primer+SC|Courgette|Fredericka+the+Great|IM+Fell+English+SC|Patrick+Hand|Rye" rel="stylesheet">
+   		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    	<link href="//djangogirlstaipei.github.io/assets/css/style.css" rel="stylesheet" type="text/css">
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	</head>
+	<body>
+		<div class="page-wrap">
+
+			<!-- Nav -->
+			<nav id="nav">
+				<ul>
+					<li><a href="/"><span class="icon fa-home"></span></a></li>
+					<li><a href="{% url 'gallery' %}"><span class="icon fa-camera-retro"></span></a></li>
+					<li><a href="{% url 'posts' %}"><span class="icon fa-file-text-o"></span></a></li>
+				</ul>
+			</nav>
+
+			<!-- Main -->
+			<section id="main" class="post_detail_page">
+
+				<!-- Header -->
+				<header id="header">
+					<div class="title_profile row">
+						<div class="col-sm-2">
+							<img class="navheadimg" src="{{ head.image.url }}" id="hover_head">
+							<div class="inner content author" id="authorblock">
+								<div class="row" style="width: auto;">
+									<div class="col-sm-4" style="padding-right: 0px;">
+										<img class="navheadimg" src="{{ head.image.url }}">
+										<div style="text-align: left; padding-left: 10%; width: auto;">
+											<h2 class="author_name" style="margin-top: 0px;">{{head.name}}</h2>
+										</div>
+									</div>
+									<div class="col-sm-8 author_thing">
+										<p class="author_profile">{{head.profile|linebreaksbr}}</p>
+										<h3 class="author_content">{{head.content|linebreaksbr}}</h3>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-5 small_title" style="padding-left: 0px">
+							<a href="/"><font size="5">Bernice's Journey</font></a>
+						</div>
+					</div>
+				</header>
+
+				<section id="banner" style=" height: 500px; background-image:url({{ post.photo.url }});">
+					
+					<div class="inner" style="bottom: 0px; position: absolute; width: auto; margin-bottom: 0px;">
+						
+						<div class="post-heading" style="color: white">
+						    <h2 class="title" style="color: white"><b>{{ post.title }}</b></h2>
+						    <div style="text-align: right;"><h4><i>- {{ head.name }}</i></h4></div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Gallery -->
+				<section id="galleries">
+
+					<!-- Photo Galleries -->
+					<div class="gallery">
+						<div class="container post post-detail" style="left: 5%; max-width: 90%; margin-left:0px; margin-right: 0px">
+					        <div class="post-heading" style="margin-left:5%; margin-right: 5%; margin-bottom: 2%; padding-top: 2%; padding-left: 0%;">
+					            <h1 class="title" style="bottom:-5%;">{{ post.title }}</h1>
+					            <div class="date" style="bottom: 30%; background-color: #ffd306;">
+					            	{{ post.created_at|date:'Y / m / d' }}
+					            </div>
+					        </div>
+					        
+					        <!-- <div id="map-canvas" class="map"></div> -->
+					        <div style="margin-left: 5%; margin-right: 5%">
+					        	<div class="location">
+						            <i class="fa fa-map-marker"></i>
+						            <span id="location-content">{{ post.location }}</span>
+						        </div>
+					        	<iframe width='100%' height='300' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' src='http://maps.google.com.tw/maps?f=q&hl=en&geocode=&q={{post.location}}&z=15&output=embed&t=p'></iframe>
+					        </div>
+					        <div class="post-content" style="margin-left: 5%; margin-right: 5%">
+								{% autoescape off %} 
+  									{{post.content}} 
+								{% endautoescape %} 
+					        </div>
+					    </div>
+					</div>
+
+				</section>
+
+			<!-- Contact -->
+				<section id="contact" style="font-family: 'IM Fell Great Primer SC', cursive;">
+
+					<!-- Form -->
+					<div class="column contact_form">
+						<h3>Get in Touch</h3>
+						<form method="POST" autocomplete="false" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="field half first">
+								<label for="name"> {{ form.name.label_tag }} </label>
+								{{ form.name }}
+								{{ form.name.errors }}
+							</div>
+							<div class="field">
+								<label for="message"> {{ form.content.label_tag }} </label>
+								{{ form.content }}
+								{{ form.content.errors }}
+							</div>
+							<ul class="actions">
+								<li><input name="submit" value="Send Message" class="button" type="submit"></li>
+							</ul>
+						</form>
+					</div>
+
+				</section>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="copyright">
+						&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>. Images: <a href="https://unsplash.com/">Unsplash</a>.
+					</div>
+				</footer>
+			</section>
+		</div>
+
+		<!-- Scripts -->
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/jquery.poptrox.min.js' %}"></script>
+        <script src="{% static 'js/jquery.scrolly.min.js' %}"></script>
+        <script src="{% static 'js/skel.min.js' %}"></script>
+        <script src="{% static 'js/util.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+        <script src="//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=false"></script>
+    	<script src="//djangogirlstaipei.github.io/assets/js/map.js"></script>
+
+	</body>
+</html>

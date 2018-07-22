@@ -1,0 +1,258 @@
+.header{
+	height: 80px;
+	margin: 10px 10px 10px 10px;
+	position: relative;
+}
+.headimg{
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	border:3px solid #fff;
+/*	top: 50%;
+    position: relative;
+    transform:translateY(-50%);*/
+}
+.title_profile .navheadimg{
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	border:3px solid #fff;
+}
+.button {
+	font-family: 'IM Fell Great Primer SC', cursive;
+	font-size: larger;
+	color: white;
+}
+.title_profile{
+	width: 90%;
+}
+.small_title{
+	top:10%;
+    position: relative;
+    transform:translateY(16%);
+    font-family: 'Courgette', cursive;
+    color: #003153;
+    margin-left: 10px;
+}
+.small_title a{
+	color: #003153;
+}
+.home_profile{
+	text-align: left;
+}
+.homenav{
+	float: left;
+	text-align: center;
+	width: 90%;
+	position: absolute;
+	z-index: 10;
+}
+.homenav li{
+	float: left;
+	width: 20%;
+	font-size: small;
+}
+.country_time li{
+	float: left;
+	font-size: small;
+}
+.page_title{
+	font-family: 'Rye', cursive;
+	color: #003153;
+	/*font-size: xx-large;*/
+}
+.country_img, .time_img img{
+	width: 100%;
+	height: auto;
+}
+.country_img:before{
+	content: "";
+	position: absolute;
+	width: 99%;
+	height: 99%;
+	left:0.5%;
+	top: 0.5%;
+	background: hsla(0,0%,100%,.6);
+	opacity: 1;
+
+}
+.time_img:before{
+	content: "";
+	position: absolute;
+	width: 99%;
+	height: 99%;
+	left:0.5%;
+	top: 0.5%;
+	background: hsla(0,0%,100%,.6);
+	opacity: 1;
+
+}
+.country{
+	
+	padding: 10px;
+}
+.img_center{
+	top:50%;
+	left: 50%;
+    position: relative;
+    transform:translate(-50%, -50%);
+}
+.country_album, .time_album{
+	margin: 20px 10px 50px 10px;
+}
+.country_img, .time_img{
+	padding: 20px;
+}
+
+.post_page .title_profile .inner {
+        position: absolute;
+        z-index: 99;
+        left: 10%;
+        top: 110%;
+        width: auto;
+       	min-width: 500px;
+       	margin-top: 10px;
+       	padding: 0px;
+			-moz-transform: none;
+			-webkit-transform: none;
+			-ms-transform: none;
+			transform: none;
+			-moz-transition: opacity 1s ease, transform 1s ease;
+			-webkit-transition: opacity 1s ease, transform 1s ease;
+			-ms-transition: opacity 1s ease, transform 1s ease;
+			transition: opacity 1s ease, transform 1s ease;
+			opacity: 1;
+			z-index: 3;
+			background: hsla(0,0%,100%,.9);
+			text-align: center;
+}
+.gallery_page .title_profile .inner {
+        position: absolute;
+        z-index: 99;
+        left: 10%;
+        top: 110%;
+        width: auto;
+       	min-width: 500px;
+       	margin-top: 10px;
+       	padding: 0px;
+			-moz-transform: none;
+			-webkit-transform: none;
+			-ms-transform: none;
+			transform: none;
+			-moz-transition: opacity 1s ease, transform 1s ease;
+			-webkit-transition: opacity 1s ease, transform 1s ease;
+			-ms-transition: opacity 1s ease, transform 1s ease;
+			transition: opacity 1s ease, transform 1s ease;
+			opacity: 1;
+			z-index: 3;
+			background: hsla(0,0%,100%,.9);
+			text-align: center;
+}
+.post_detail_page .title_profile .inner {
+        position: absolute;
+        z-index: 99;
+        left: 10%;
+        top: 110%;
+        width: auto;
+       	min-width: 500px;
+       	margin-top: 10px;
+       	padding: 0px;
+			-moz-transform: none;
+			-webkit-transform: none;
+			-ms-transform: none;
+			transform: none;
+			-moz-transition: opacity 1s ease, transform 1s ease;
+			-webkit-transition: opacity 1s ease, transform 1s ease;
+			-ms-transition: opacity 1s ease, transform 1s ease;
+			transition: opacity 1s ease, transform 1s ease;
+			opacity: 1;
+			z-index: 3;
+			background: hsla(0,0%,100%,.4);
+			text-align: center;
+}
+#authorblock {
+	display: none;
+	width: auto;
+	margin-top: 30px;
+	top:40px;
+}
+#hover_head:hover + #authorblock {
+	display: block;
+}
+/*#small_head:after{
+	content: "";
+	width: 50px;
+	height: 50px;
+	left:15%;
+	position: absolute;
+	z-index: 9999;
+}*/
+.title_profile .inner .navheadimg{
+	height: 80px;
+	width: 80px;
+	border-radius: 50%;
+	border:3px solid #fff;
+	margin: 10px;
+}
+.author_name{
+	margin:10px;
+}
+.author_profile{
+	margin:10px;
+}
+.author_content{
+	padding-left: 10px;
+}
+.author_thing {
+	text-align: left;
+}
+.author_thing:after {
+	content: "";
+	position: absolute;
+	width: 90%;
+	height: 90%;
+	left:0%;
+	top: 5%;
+	border-left: 1px solid #000;
+}
+.post-heading .title{
+	color: #ff5e73;
+	font-family: 'Fredericka the Great', cursive;
+}
+.post .date{
+	font-family: 'Rye', cursive;
+	font-size: larger;
+	background-color: #ffff88;
+}
+.snd_order {
+	font-family: 'IM Fell Great Primer SC', cursive;
+	font-size: x-large;
+}
+#homepage_inner{
+	font-family: 'Rye', cursive;
+	color: #003153;
+	font-size: small;
+}
+#homepage_inner .head{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.post-content p{
+	font-family: 'Patrick Hand', serif;
+	font-size: x-large;
+	margin-bottom: 3%;
+}
+.post-content img{
+	left: 50%;
+    position: relative;
+    transform:translateX(-50%);
+    width:700px;
+}
+.caption {
+	font-family: 'Patrick Hand', serif;
+	font-size: x-large;
+}
+#contact{
+	background:#e6e6e6;
+	font-family: 'Patrick Hand', serif;
+}

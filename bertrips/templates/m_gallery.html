@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+{% load staticfiles %}
+<!--
+	Snapshot by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<!-- CHESTER_HER -->
+<html>
+	<head>
+		<title>Gallery - Bernice's Journey</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    	<link rel="stylesheet" href="{% static 'css/m_homepage.css' %}"/>
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    	<link href="//fonts.googleapis.com/css?family=Lemon" rel="stylesheet" type="text/css">
+    	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    	<link href="//djangogirlstaipei.github.io/assets/css/style.css" rel="stylesheet" type="text/css">
+    	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    	<link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Port+Lligat+Slab|Itim|Alegreya+SC|IM+Fell+Great+Primer+SC|Courgette|Fredericka+the+Great|IM+Fell+English+SC|Patrick+Hand|Rye" rel="stylesheet">
+	</head>
+	<body>
+		<div class="page-wrap">
+
+			<!-- Nav -->
+			<nav id="nav">
+				<ul>
+					<li><a href="/"><span class="icon fa-home"></span></a></li>
+					<li><a href="{% url 'gallery' %}" class="active"><span class="icon fa-camera-retro"></span></a></li>
+					<li><a href="{% url 'posts' %}"><span class="icon fa-file-text-o"></span></a></li>
+				</ul>
+			</nav>
+
+			<!-- Main -->
+			<section id="main" class="gallery_page">
+
+				<!-- Header -->
+				<header id="header">
+					<div class="title_profile row">
+						<div class="col-xs-2">
+							<img class="navheadimg" src="{{ head.image.url }}" id="hover_head">
+							<div class="inner content author" id="authorblock">
+								<div class="row" style="width: auto;">
+									<div class="col-sm-4" style="padding-right: 0px;">
+										<img class="navheadimg" src="{{ head.image.url }}">
+										<div style="text-align: left; padding-left: 10%; width: auto;">
+											<h2 class="author_name" style="margin-top: 0px;">{{head.name}}</h2>		
+										</div>
+									</div>
+									<div class="col-sm-8 author_thing">
+										<p class="author_profile">{{head.profile|linebreaksbr}}</p>
+										<h3 class="author_content">{{head.content|linebreaksbr}}</h3>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-5 small_title" style="padding-left: 0px">
+							<a href="/"><font size="5">Bernice's Journey</font></a>
+						</div>
+					</div>
+				</header>
+
+				<!-- Gallery -->
+				<section id="galleries">
+
+					<!-- Photo Galleries -->
+					<div class="gallery">
+
+						<!-- Filters -->
+						<header>
+							<div class="row">
+								<div class="col-xs-6">
+									<h2 class="page_title">My Gallery</h2>
+								</div>
+								<div class="country_time col-xs-6" style="right: 0px;">
+									<ul class="tabs">
+										<li>
+											<a href="#" data-tag="country_album" class="button active albumtab">Country</a>
+										</li>
+										<li>
+											<a href="#" data-tag="time_album" class="button albumtab">Time</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</header>
+							
+						<div class="content">
+							{% for country in country_list %}
+							<div class="country_album album ">
+								<header class="country_name">
+									<ul class="tabs">
+										<li>
+											<a href="#" data-tag="{{ country.country }}" class="button active">{{ country.country }}</a>
+										</li>
+									</ul>
+								</header>
+								{% for year_month in yearmonth_list %}
+								<div class="country {{ country.country }} activecat cat">
+									<div class="snd_order" style="bottom: 30%; font-family: 'IM Fell Great Primer SC', cursive;font-size: x-large;">
+										{{ year_month }}
+									</div>
+									<div class="row">
+									{% for img in img_country_list %}
+										{% if img.country == country.country and img.date|date:"Y.m" == year_month %}
+											<div class="media col-sm-3 country_img">
+												<div class="img_center">
+													<a href="{{ img.image.url }}"><img src="{{ img.image.url }}" alt="" title="{{ img.title }} &#13; {{img.content}}" style="display:block; margin:auto;" class = "thumbnail"/></a>
+												</div>
+											</div>
+										{% endif %}
+									{% endfor %}
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+							{% endfor %}
+
+							{% for year_month in yearmonth_list %}
+							<div class="time_album album" style="display: none;">
+								<header class="time_name">
+									<ul class="tabs">
+									<li>
+										<a href="#" data-tag="{{ year_month }}" class="button active">{{ year_month }}</a>
+									</li>
+									</ul>
+								</header>
+								{% for country in country_list %}
+								<div class="time {{ year_month }} activecat cat" >
+									<div class="snd_order" style="bottom: 30%; font-family: 'IM Fell Great Primer SC', cursive; font-size: x-large;">
+										{{ country.country }}
+									</div>
+									<div class="row">
+									{% for img in img_time_list %}
+										{% if img.date|date:"Y.m" == year_month and img.country == country.country %}
+											<div class="media col-sm-3 time_img" >
+												<div class="img_center">
+													<a href="{{ img.image.url }}"><img src="{{ img.image.url }}" alt="" title="{{ img.title}} &#13; {{img.content}}" style="display:block; margin:auto;" class = "thumbnail"/></a>
+												</div>
+											</div>
+										{% endif %}
+									{% endfor %}
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</section>
+
+				<!-- Contact -->
+				<section id="contact" style="font-family: 'IM Fell Great Primer SC', cursive;">
+					<!-- Social -->
+
+					<!-- Form -->
+					<div class="column contact_form">
+						<h3>Get in Touch</h3>
+						<form method="POST" autocomplete="false" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="field half first">
+								<label for="name"> {{ form.name.label_tag }} </label>
+								{{ form.name }}
+								{{ form.name.errors }}
+							</div>
+							<div class="field">
+								<label for="message"> {{ form.content.label_tag }} </label>
+								{{ form.content }}
+								{{ form.content.errors }}
+							</div>
+							<ul class="actions">
+								<li><input name="submit" value="Send Message" class="button" type="submit"></li>
+							</ul>
+						</form>
+					</div>
+				</section>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="copyright">
+						&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>. Images: <a href="https://unsplash.com/">Unsplash</a>.
+					</div>
+				</footer>
+			</section>
+		</div>
+
+		<!-- Scripts -->
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/jquery.poptrox.min.js' %}"></script>
+        <script src="{% static 'js/jquery.scrolly.min.js' %}"></script>
+        <script src="{% static 'js/skel.min.js' %}"></script>
+        <script src="{% static 'js/util.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+
+	</body>
+</html>

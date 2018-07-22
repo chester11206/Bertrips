@@ -1,0 +1,50 @@
+<!-- homepage.html -->
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<!-- CHESTER_HER -->
+<html>
+    <head>
+        <title>Bernice's Journey</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/homepage.css' %}"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Port+Lligat+Slab|Itim|Alegreya+SC|IM+Fell+Great+Primer+SC|Courgette|Fredericka+the+Great|IM+Fell+English+SC|Patrick+Hand|Rye" rel="stylesheet">
+    </head>
+    <body>
+        <div class="page-wrap">
+            <section id="main">
+                <section id="banner" style="background-image:url({{ img.image.url }})">
+                    <div class="inner content author" style="height: auto;">
+                        <div class="row">
+                        <div class="head col-sm-3">
+                            <img class="headimg" src="{{ head.image.url }}">
+                        </div>
+                        <div class="home_profile col-sm-9">
+                            <h2>Bernice's Journey</h2>
+                            <p>Hello, I am a student from Taiwan</p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="homenav">
+                        <ul class="tabs">
+                            <li><a href="/" class="button active">Home</a></li>
+                            <li><a href="{% url 'gallery' %}" class="button">Gallery</a></li>
+                            <li><a href="{% url 'posts' %}" class="button">Post</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+        </div>
+
+        <!-- Scripts -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/jquery.poptrox.min.js' %}"></script>
+        <script src="{% static 'js/jquery.scrolly.min.js' %}"></script>
+        <script src="{% static 'js/skel.min.js' %}"></script>
+        <script src="{% static 'js/util.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+    </body>
+</html>																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											
